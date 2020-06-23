@@ -1,4 +1,6 @@
 *.pbxproj -text
+*.ts linguist-language=Typescript
+*.tsx linguist-language=Typescript
 *.css linguist-detectable=false
 *.ts linguist-detectable=true
 *.tsx linguist-detectable=true
