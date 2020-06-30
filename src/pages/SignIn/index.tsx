@@ -6,7 +6,7 @@ import logoImg from '../../assets/logo.png';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-import { Container, Text } from './styles';
+import { Container, Text, ForgotPassword, ForgotPasswordText } from './styles';
 
 const SignIn: React.FC = () => {
   return (
@@ -18,6 +18,10 @@ const SignIn: React.FC = () => {
       <Input name="password" icon="lock" placeholder="Senha" />
 
       <Button onPress={() => console.log('foi')}>Entrar</Button>
+
+      <ForgotPassword onPress={() => console.log('')}>
+        <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
+      </ForgotPassword>
     </Container>
   );
 };
