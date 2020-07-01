@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import {
   Image,
   View,
@@ -23,6 +24,8 @@ import {
 } from './styles';
 
 const SignIn: React.FC = () => {
+  const navigation = useNavigation();
+
   return (
     <>
       <KeyboardAvoidingView
@@ -52,7 +55,12 @@ const SignIn: React.FC = () => {
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
-      <CreateAccountButton>
+
+      <CreateAccountButton
+        onPress={() => {
+          navigation.navigate('SignUp');
+        }}
+      >
         <Icon name="log-in" size={20} color="#ff9000" />
         <CreateAccountButtonText>Criar uma conta</CreateAccountButtonText>
       </CreateAccountButton>
