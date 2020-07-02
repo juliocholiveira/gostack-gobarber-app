@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from 'react';
-import { useNavigation, NavigationContainer } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import {
   Image,
   View,
@@ -54,11 +54,11 @@ const SignIn: React.FC = () => {
             <Form ref={formRef} onSubmit={handleSubmit}>
               <Input name="email" icon="mail" placeholder="Email" />
               <Input name="password" icon="lock" placeholder="Senha" />
-
-              <Button onPress={() => formRef.current?.submitForm()}>
-                Entrar
-              </Button>
             </Form>
+
+            <Button onPress={() => formRef.current?.submitForm()}>
+              Entrar
+            </Button>
 
             <ForgotPassword onPress={() => console.log('')}>
               <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
