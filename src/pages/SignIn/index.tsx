@@ -20,6 +20,8 @@ import Button from '../../components/Button';
 
 import getValidationErrors from '../../utils/getValidationErrors';
 
+import { useAuth } from '../../hooks/AuthContext';
+
 import {
   Container,
   Text,
@@ -31,12 +33,16 @@ import {
 
 interface SignInFormData {
   email: string;
-  senha: string;
+  password: string;
 }
 
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
+
+  const { signIn, user } = useAuth();
+
+  console.log(user);
 
   const handleSubmit = useCallback(async (data: SignInFormData) => {
     try {
@@ -52,20 +58,19 @@ const SignIn: React.FC = () => {
         abortEarly: false,
       });
 
-      /*
-        await signIn({
-          email: data.email,
-          password: data.password,
-        });
+      await signIn({
+        email: data.email,
+        password: data.password,
+      });
 
-        history.push('/dashboard');
-        */
+      // history.push('/dashboard');
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
         formRef.current?.setErrors(errors);
         return;
       }
+
       // Disparar um toast
       Alert.alert('Erro na autenticação', 'Ocorreu um erro ao fazer login');
     }
